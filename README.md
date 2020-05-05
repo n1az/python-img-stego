@@ -1,5 +1,5 @@
-1. To run this code you have to download python latest version in your pc.
-2. then run this following command in your command prompt or terminal:
+1. To run these code you have to download python latest version in your pc.
+2. then run these following command in your command prompt or terminal:
 
 	1.python -m pip install opencv-python
 	2.python -m pip install numpy
