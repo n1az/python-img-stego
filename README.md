@@ -3,8 +3,9 @@
 
 	1.python -m pip install opencv-python\
 	2.python -m pip install numpy\
-	3.python -m pip install pillow\
-	4.python -m pip install SSIM-PIL
+	3.python -m pip install matplotlib\
+	4.python -m pip install pillow\
+	5.python -m pip install SSIM-PIL
 
 To run a python file go to the directory it belongs and open cmd or terminal there and write:
 python filename.py
