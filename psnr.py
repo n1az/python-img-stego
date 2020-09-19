@@ -15,10 +15,15 @@ def PSNR(original, compressed):
 	return psnr 
 
 def main(): 
-	original = cv2.imread("goldhill.png") ##input image Original
-	compressed = cv2.imread("goldhillx.png", 1) ### input image Stego
-	value = PSNR(original, compressed) 
-	print(f"PSNR value is {value} dB") 
-	
+	avg = 0
+	for i in range(1054):
+		j= str(i)
+		original = cv2.imread('datasetlfwx/image-'+j+'.jpg' ) ##input image Original
+		compressed = cv2.imread('datasetlswy/image-'+j+'.jpg', 1) ### input image Stego
+		value = PSNR(original, compressed) 
+		avg += value
+		print(f"PSNR value is {value} dB") 
+	avg = avg / 1054
+	print("average value of PSNR is : %.4f" % avg)
 if __name__ == "__main__": 
 	main() 
