@@ -16,14 +16,14 @@ def PSNR(original, compressed):
 
 def main(): 
 	avg = 0
-	for i in range(1054):
+	for i in range(52):
 		j= str(i)
-		original = cv2.imread('datasetlfwx/image-'+j+'.jpg' ) ##input image Original
-		compressed = cv2.imread('datasetlswy/image-'+j+'.jpg', 1) ### input image Stego
+		original = cv2.imread('popx/image'+j+'.jpg' ) ##input image Original
+		compressed = cv2.imread('popy/image'+j+'.jpg', 1) ### input image Stego
 		value = PSNR(original, compressed) 
 		avg += value
-		print(f"PSNR value is {value} dB") 
-	avg = avg / 1054
+		print(f"PSNR value for {j} is {value} dB") 
+	avg = avg / 52
 	print("average value of PSNR is : %.4f" % avg)
 if __name__ == "__main__": 
 	main() 

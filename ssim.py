@@ -5,7 +5,13 @@
 from SSIM_PIL import compare_ssim
 from PIL import Image
 
-image1 = Image.open("goldhill.png") ###original image
-image2 = Image.open("goldhillx.png") ###stego image
-value = compare_ssim(image1, image2)
-print(value)
+avg = 0
+for i in range(52):
+	j = str(i)
+	image1 = Image.open('popx/image'+j+'.jpg') ###original image
+	image2 = Image.open('popy/image'+j+'.jpg') ###stego image
+	value = compare_ssim(image1, image2)
+	print(value)
+	avg += value
+avg = avg / 52
+print("SSIM avg is : %.4f " % avg)

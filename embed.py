@@ -67,16 +67,19 @@ def makeEqLen(a):
 	else:
 		return a
 
-for i in range(1053,1055):
+#secret text
+st = "Anonymous Fsocie mr robot Anonymous Fsocie mr robot Anonymous FsAnonymous Fsocie mr robot Anonymous Fsocie mr robot Anonymous Fs"
+
+for i in range(52):
 	j=str(i)
 
-	img = cv2.imread('datasetlfwx/image-'+j+'.jpg',0) #input file reading
+	img = cv2.imread('popx/image'+j+'.jpg',0) #input file reading
 	edges = cv2.Canny(img,50,100)
 	width = img.shape[0]
 
 
 	#loading test image
-	testImage = Image.open("datasetlfwx/image-"+j+".jpg") #input file reading
+	testImage = Image.open("popx/image"+j+".jpg") #input file reading
 	pixelXY = testImage.load()
 
 	edgedic = {}
@@ -89,8 +92,7 @@ for i in range(1053,1055):
 
 	pin = 0
 
-	#secret text
-	st = "Anonymous Fsociety and mr. robot yo. ty and mr. robot yo Anonymous Fsociety and mr. robot yo Anonymous Fsociety and mr. robot yo"
+	
 
 
 	#binary secret msg
@@ -126,14 +128,17 @@ for i in range(1053,1055):
 		for pixvalfinaly in finlist:
 			pixValX.append(pixvalfinalx)
 			pixValY.append(pixvalfinaly)
-	pix = pixelXY[208,3]
-	pixR = bin(pix[0])[2:]
-	pixRx = makeEqLen(pixR)
-	
+	# count = 0
+	# for k in pixValX:
+	# 	if( k >= 426):
+	# 		print(k)
+	# 		count+=1
+	# print(count)
+	# print(len(pixValX))
 	#embedding 
 	#main loop: iterate secret msg
 	for msgbit in range(int(looplen)):
-		pix = pixelXY[int(pixValX[pin]), int(pixValY[pin])]
+		pix = pixelXY[int(pixValY[pin+0]), int(pixValX[pin+0])]
 		if(outPx==1):
 			pixR = makeEqLen(bin(pix[0])[2:])
 			pixG = makeEqLen(bin(pix[1])[2:])
@@ -147,19 +152,21 @@ for i in range(1053,1055):
 			pixB = pixB[:5]+ smx[startx:startx+2] + pixB[7:]
 			startx+=2
 			embdB = int(pixB,2)
-			pixelXY[int(pixValX[pin]), int(pixValY[pin])] = tuple([embdR, embdG, embdB])
+			pixelXY[int(pixValY[pin]), int(pixValX[pin])] = tuple([embdR, embdG, embdB])
 			cOutx = pixB[7:]
 			FREDKIN(cOutx)
+			pin+=1
 		elif(outPx==0):
 			outPy = 1
 			outPy = 0
-		pin+=1
+			pin+=1
+		
 
 
 
 		
 
 	#saving stego image
-	testImage.save('datasetlswy/image-'+j+'.jpg', format = 'JPEG')  #output file reading
+	testImage.save('popy/image'+j+'.jpg', format = 'JPEG')  #output file reading
 	print("Success-"+j+"")
 
